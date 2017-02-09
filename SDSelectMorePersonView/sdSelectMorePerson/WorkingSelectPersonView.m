@@ -74,105 +74,15 @@ WorkingSelectPersonTableViewDelegate
     
     [self removeFromSuperview];
 }
--(void)setUI{
-    
-    bjView = [[UIView alloc] init];
-    bjView.frame = CGRectMake(0, mDeviceHeight-300-68-100, mDeviceWidth, 300+100);
-    bjView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:bjView];
-    //
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0, 0, mDeviceWidth , 50);
-    label.backgroundColor = bjColor;
-    label.textColor = fontHightColor;
-    label.text = @"选择人员";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont systemFontOfSize:15];
-    label.numberOfLines = 0;
-    [bjView addSubview:label];
-    [self addBtnViewUI:50];
-    
-    [self addLab:@"部门角色"andtextViewTag:20 andH:100];
 
-    
-//    selectPersonTab =[[WorkingSelectPersonTableView alloc]initWithFrame:CGRectMake(0, 160, mDeviceWidth, 170) addDataArr:smallTabArr];
-    selectPersonTab =[[WorkingSelectPersonTableView alloc]initWithFrame:CGRectMake(0, 160, mDeviceWidth, 170) style:UITableViewStylePlain];
-    selectPersonTab.w_delegate=self;
-    
-
-    [bjView addSubview:selectPersonTab];
-
-    [self DefaultSet]; //默认数据
-    
-    
-    [self addBtn];
-    
-    //
-    [self addtable];
-}
+#pragma mark - workingSelectPerson把选择的数组返回过来
 -(void)WorkingSelectPersonSelectView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath AndSelectArr:(NSArray *)selectArr{
-    
     
     selectArray =[[NSMutableArray alloc]initWithArray:selectArr];
     
     
 }
 
-#pragma mark - 筛选条件按钮(部门/角色)
--(void)addBtnViewUI:(CGFloat )h{
-    
-    UILabel *leftlabel = [[UILabel alloc] init];
-    leftlabel.frame = CGRectMake(0, h, 100, 50);
-    leftlabel.backgroundColor = [UIColor clearColor];
-    leftlabel.textColor = fontHightColor;
-    leftlabel.text =@"筛选条件:";
-    leftlabel.textAlignment = NSTextAlignmentRight;
-    leftlabel.font = [UIFont systemFontOfSize:15];
-    leftlabel.numberOfLines = 0;
-    [bjView addSubview:leftlabel];
-    
-    UIButton *boybtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    boybtn.frame = CGRectMake(110, h+17.5, 15, 15);
-    [boybtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box"] forState:UIControlStateNormal];
-    [boybtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box_select"] forState:UIControlStateSelected];
-    //    boybtn.backgroundColor=[UIColor redColor];
-    [boybtn  addTarget:self action:@selector(boyClik:) forControlEvents:UIControlEventTouchUpInside];
-    boybtn.tag=101;
-    boybtn.selected=YES;
-    [bjView addSubview: boybtn];
-    
-    
-    UILabel *boylab = [[UILabel alloc] init];
-    boylab.frame = CGRectMake(130, h, 80, 50);
-    boylab.backgroundColor = [UIColor clearColor];
-    boylab.textColor = fontHightColor;
-    boylab.text =@"按部门选择";
-    boylab.textAlignment = NSTextAlignmentLeft;
-    boylab.font = [UIFont systemFontOfSize:15];
-    boylab.numberOfLines = 0;
-    [bjView addSubview:boylab];
-    
-    //
-    UIButton *girlbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    girlbtn.frame = CGRectMake(220, h+17.5, 15, 15);
-    //    girlbtn.backgroundColor=[UIColor redColor];
-    [girlbtn  addTarget:self action:@selector(boyClik:) forControlEvents:UIControlEventTouchUpInside];
-    girlbtn.tag=102;
-    [girlbtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box"] forState:UIControlStateNormal];
-    [girlbtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box_select"] forState:UIControlStateSelected];
-    [bjView addSubview: girlbtn];
-    
-    UILabel *girllab = [[UILabel alloc] init];
-    girllab.frame = CGRectMake(240, h, 80, 50);
-    girllab.backgroundColor = [UIColor clearColor];
-    girllab.textColor = fontHightColor;
-    girllab.text =@"按角色选择";
-    girllab.textAlignment = NSTextAlignmentLeft;
-    girllab.font = [UIFont systemFontOfSize:15];
-    girllab.numberOfLines = 0;
-    [bjView addSubview:girllab];
-    
-}
 #pragma mark -  筛选条件按钮部门和角色选择点击事件
 -(void)boyClik:(UIButton *)sender{
     
@@ -187,9 +97,6 @@ WorkingSelectPersonTableViewDelegate
     
     UITextView *textV =[self viewWithTag:20]; //部门选择
     UITextView *personV  =[self viewWithTag:21]; //人员选择
-    
-    
-    
     
     if (sender.tag ==101) //120 部门
     {
@@ -222,43 +129,6 @@ WorkingSelectPersonTableViewDelegate
     
 }
 
-#pragma mark - 默认数据
--(void)DefaultSet{
-    UITextView *textV =[self viewWithTag:20]; //部门选择
-    UITextView *personV  =[self viewWithTag:21]; //人员选择
-    [tabArr removeAllObjects];
-    [smallTabArr removeAllObjects];
-    tabArr =[[NSMutableArray alloc]initWithArray:DeptList];
-    textV.text =tabArr[0][@"DeptName"];
-    for (int i =0;i<StaffList.count;i++){
-        if ( [[NSString stringWithFormat:@"%@",tabArr[0][@"DeptID"]] isEqualToString:[NSString stringWithFormat:@"%@",StaffList[i][@"DeptID"]]]){
-            [smallTabArr addObject:StaffList[i]];
-            NSLog(@"smallTabArr:%@",smallTabArr);
-        }
-    }
-    if (smallTabArr<=0)
-    {
-        personV.text =@"";
-        [selectDic removeAllObjects];
-    }else {
-        personV.text =smallTabArr[0][@"StaffName"];
-        selectDic =[[NSMutableDictionary alloc]initWithDictionary:smallTabArr[0]];
-        selectPersonTab.dataArray=[[NSMutableArray alloc]initWithArray:smallTabArr];
-        [selectPersonTab.selectedIndexs removeAllObjects];
-        [selectPersonTab.selectedArr removeAllObjects];
-        [selectPersonTab reloadData];
-    }
-    
-    CGFloat tabH =tabArr.count*30;
-    if (tabH >300){
-        tabH =300;
-    }else {
-        tabH =tabArr.count*30;
-    }
-    tabView.frame =CGRectMake(110, mDeviceHeight-tabH-300, mDeviceWidth-140, tabH);
-    personTab.frame =CGRectMake(0, 0, mDeviceWidth-140, tabH);
-    [personTab reloadData];
-}
 
 #pragma mark - 部门角色/可选人员UI
 -(void)addLab:(NSString *)leftStr andtextViewTag:(NSInteger) tag andH:(CGFloat )h{
@@ -366,20 +236,7 @@ WorkingSelectPersonTableViewDelegate
         [personTab reloadData];
     }
 }
-#pragma mark - 确定按钮
--(void) addBtn {
-    
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(20, 230+100+20, mDeviceWidth-40, 35);
-    [btn setTitle:@"确定" forState:UIControlStateNormal];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn  addTarget:self action:@selector(saveBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImage:[UIImage imageNamed:@"mainColor"] forState:UIControlStateNormal];
-    btn.layer.cornerRadius=5;
-    btn.layer.masksToBounds=YES;
-    [bjView  addSubview: btn];
-    
-}
+
 
 #pragma mark - 确定按钮点击事件
 -(void)saveBtn:(UIButton *)sender{
@@ -399,30 +256,6 @@ WorkingSelectPersonTableViewDelegate
 }
 
 
--(void)addtable{
-    
-    tabView =[[UIView alloc]init];
-    tabView.frame =CGRectMake(110, 250, mDeviceWidth-140, 330);
-    tabView.backgroundColor=[UIColor clearColor];
-    tabView.hidden=YES;
-    [self addSubview:tabView];
-    tabView.layer.shadowColor =[UIColor blackColor].CGColor;
-    tabView.layer.shadowOffset =CGSizeMake(4, 4);
-    tabView.layer.shadowRadius=4;
-    tabView.layer.shadowOpacity=0.5;
-    
-    personTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, mDeviceWidth-140, 330) style:UITableViewStylePlain];
-    personTab.delegate = self;
-    personTab.dataSource = self;
-    personTab.showsVerticalScrollIndicator = NO;
-    personTab.separatorStyle = UITableViewCellSeparatorStyleNone;
-    personTab.backgroundColor = [UIColor whiteColor];
-    
-    personTab.bounces=YES;
-    [tabView addSubview:personTab];
-    
-
-}
 
 #pragma mark ----------UITabelViewDataSource----------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -490,9 +323,7 @@ WorkingSelectPersonTableViewDelegate
 #pragma mark ----------UITabelViewDelegate----------
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     UIButton *DeptListBtn =[self viewWithTag:101];
     UIButton *RoleListBtn =[self viewWithTag:102];
     UITextView *textV =[self viewWithTag:20]; //部门选择
@@ -532,20 +363,15 @@ WorkingSelectPersonTableViewDelegate
             }
             [personTab reloadData];
             
-            
-            
         }else if (RoleListBtn.selected==YES){
             textV.text = dic[@"RoleName"];
             [smallTabArr removeAllObjects];
             
             for (int i =0;i<StaffList.count;i++){
-                
-                
                 if ( [[NSString stringWithFormat:@"%@",dic[@"RoleID"]] isEqualToString:[NSString stringWithFormat:@"%@",StaffList[i][@"RoleID"]]]){
                     [smallTabArr addObject:StaffList[i]];
                 }
             }
-            
             if (smallTabArr.count<=0){
                 personV.text = @"";
                 [selectDic removeAllObjects];
@@ -575,6 +401,174 @@ WorkingSelectPersonTableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 30;
+}
+#pragma mark - 默认数据
+-(void)DefaultSet{
+    UITextView *textV =[self viewWithTag:20]; //部门选择
+    UITextView *personV  =[self viewWithTag:21]; //人员选择
+    [tabArr removeAllObjects];
+    [smallTabArr removeAllObjects];
+    tabArr =[[NSMutableArray alloc]initWithArray:DeptList];
+    textV.text =tabArr[0][@"DeptName"];
+    for (int i =0;i<StaffList.count;i++){
+        if ( [[NSString stringWithFormat:@"%@",tabArr[0][@"DeptID"]] isEqualToString:[NSString stringWithFormat:@"%@",StaffList[i][@"DeptID"]]]){
+            [smallTabArr addObject:StaffList[i]];
+            NSLog(@"smallTabArr:%@",smallTabArr);
+        }
+    }
+    if (smallTabArr<=0)
+    {
+        personV.text =@"";
+        [selectDic removeAllObjects];
+    }else {
+        personV.text =smallTabArr[0][@"StaffName"];
+        selectDic =[[NSMutableDictionary alloc]initWithDictionary:smallTabArr[0]];
+        selectPersonTab.dataArray=[[NSMutableArray alloc]initWithArray:smallTabArr];
+        [selectPersonTab.selectedIndexs removeAllObjects];
+        [selectPersonTab.selectedArr removeAllObjects];
+        [selectPersonTab reloadData];
+    }
+    
+    CGFloat tabH =tabArr.count*30;
+    if (tabH >300){
+        tabH =300;
+    }else {
+        tabH =tabArr.count*30;
+    }
+    tabView.frame =CGRectMake(110, mDeviceHeight-tabH-300, mDeviceWidth-140, tabH);
+    personTab.frame =CGRectMake(0, 0, mDeviceWidth-140, tabH);
+    [personTab reloadData];
+}
+
+#pragma mark -  *********************布局UI**********************
+-(void)setUI{
+    
+    bjView = [[UIView alloc] init];
+    bjView.frame = CGRectMake(0, mDeviceHeight-300-68-100, mDeviceWidth, 300+100);
+    bjView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:bjView];
+    //
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, mDeviceWidth , 50);
+    label.backgroundColor = bjColor;
+    label.textColor = fontHightColor;
+    label.text = @"选择人员";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:15];
+    label.numberOfLines = 0;
+    [bjView addSubview:label];
+    [self addBtnViewUI:50];
+    
+    [self addLab:@"部门角色"andtextViewTag:20 andH:100];
+    
+    
+    
+    selectPersonTab =[[WorkingSelectPersonTableView alloc]initWithFrame:CGRectMake(0, 160, mDeviceWidth, 170) style:UITableViewStylePlain];
+    selectPersonTab.w_delegate=self;
+    
+    [bjView addSubview:selectPersonTab];
+    
+    [self DefaultSet]; //默认数据
+    
+    [self addBtn];
+    //
+    [self addtable];
+}
+
+#pragma mark - 确定按钮
+-(void) addBtn {
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(20, 230+100+20, mDeviceWidth-40, 35);
+    [btn setTitle:@"确定" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn  addTarget:self action:@selector(saveBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setBackgroundImage:[UIImage imageNamed:@"mainColor"] forState:UIControlStateNormal];
+    btn.layer.cornerRadius=5;
+    btn.layer.masksToBounds=YES;
+    [bjView  addSubview: btn];
+    
+}
+#pragma mark - 添加列表
+-(void)addtable{
+    
+    tabView =[[UIView alloc]init];
+    tabView.frame =CGRectMake(110, 250, mDeviceWidth-140, 330);
+    tabView.backgroundColor=[UIColor clearColor];
+    tabView.hidden=YES;
+    [self addSubview:tabView];
+    tabView.layer.shadowColor =[UIColor blackColor].CGColor;
+    tabView.layer.shadowOffset =CGSizeMake(4, 4);
+    tabView.layer.shadowRadius=4;
+    tabView.layer.shadowOpacity=0.5;
+    
+    personTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, mDeviceWidth-140, 330) style:UITableViewStylePlain];
+    personTab.delegate = self;
+    personTab.dataSource = self;
+    personTab.showsVerticalScrollIndicator = NO;
+    personTab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    personTab.backgroundColor = [UIColor whiteColor];
+    
+    personTab.bounces=YES;
+    [tabView addSubview:personTab];
+    
+    
+}
+
+#pragma mark - 筛选条件按钮(部门/角色)
+-(void)addBtnViewUI:(CGFloat )h{
+    
+    UILabel *leftlabel = [[UILabel alloc] init];
+    leftlabel.frame = CGRectMake(0, h, 100, 50);
+    leftlabel.backgroundColor = [UIColor clearColor];
+    leftlabel.textColor = fontHightColor;
+    leftlabel.text =@"筛选条件:";
+    leftlabel.textAlignment = NSTextAlignmentRight;
+    leftlabel.font = [UIFont systemFontOfSize:15];
+    leftlabel.numberOfLines = 0;
+    [bjView addSubview:leftlabel];
+    
+    UIButton *boybtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    boybtn.frame = CGRectMake(110, h+17.5, 15, 15);
+    [boybtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box"] forState:UIControlStateNormal];
+    [boybtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box_select"] forState:UIControlStateSelected];
+    //    boybtn.backgroundColor=[UIColor redColor];
+    [boybtn  addTarget:self action:@selector(boyClik:) forControlEvents:UIControlEventTouchUpInside];
+    boybtn.tag=101;
+    boybtn.selected=YES;
+    [bjView addSubview: boybtn];
+    
+    
+    UILabel *boylab = [[UILabel alloc] init];
+    boylab.frame = CGRectMake(130, h, 80, 50);
+    boylab.backgroundColor = [UIColor clearColor];
+    boylab.textColor = fontHightColor;
+    boylab.text =@"按部门选择";
+    boylab.textAlignment = NSTextAlignmentLeft;
+    boylab.font = [UIFont systemFontOfSize:15];
+    boylab.numberOfLines = 0;
+    [bjView addSubview:boylab];
+    
+    //
+    UIButton *girlbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    girlbtn.frame = CGRectMake(220, h+17.5, 15, 15);
+    
+    [girlbtn  addTarget:self action:@selector(boyClik:) forControlEvents:UIControlEventTouchUpInside];
+    girlbtn.tag=102;
+    [girlbtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box"] forState:UIControlStateNormal];
+    [girlbtn setBackgroundImage:[UIImage imageNamed:@"icon_check_box_select"] forState:UIControlStateSelected];
+    [bjView addSubview: girlbtn];
+    
+    UILabel *girllab = [[UILabel alloc] init];
+    girllab.frame = CGRectMake(240, h, 80, 50);
+    girllab.backgroundColor = [UIColor clearColor];
+    girllab.textColor = fontHightColor;
+    girllab.text =@"按角色选择";
+    girllab.textAlignment = NSTextAlignmentLeft;
+    girllab.font = [UIFont systemFontOfSize:15];
+    girllab.numberOfLines = 0;
+    [bjView addSubview:girllab];
+    
 }
 
 /*
