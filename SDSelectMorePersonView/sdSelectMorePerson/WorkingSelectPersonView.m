@@ -568,14 +568,10 @@ WorkingSelectPersonTableViewDelegate
         
         personV.text = dic[@"StaffName"];
         selectDic =[[NSMutableDictionary alloc]initWithDictionary:dic];
-        
     }else {
-        
     }
-    
     tabView.hidden=YES;
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 30;
