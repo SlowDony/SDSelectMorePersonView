@@ -291,7 +291,7 @@ WorkingSelectPersonTableViewDelegate
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.frame = CGRectMake(mDeviceWidth-35, h+15, 20, 20);
     imageView.image = [UIImage imageNamed:@"bg_moreunfold"];
-    //    imageView.backgroundColor=[UIColor redColor];
+    
     [bjView addSubview:imageView];
     
     //
@@ -351,10 +351,6 @@ WorkingSelectPersonTableViewDelegate
         }else {
             
             tabView.hidden=NO;
-//            yixiangChanpinArr =[NSMutableArray arrayWithArray:array];
-            
-
-            
         }
         
         CGFloat tabH =smallTabArr.count*30;
@@ -425,13 +421,7 @@ WorkingSelectPersonTableViewDelegate
     personTab.bounces=YES;
     [tabView addSubview:personTab];
     
-    
-   
 
-    
-    
-    
-    
 }
 
 #pragma mark ----------UITabelViewDataSource----------
