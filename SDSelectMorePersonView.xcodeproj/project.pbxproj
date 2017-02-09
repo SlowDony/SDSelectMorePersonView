@@ -15,6 +15,15 @@
 		187D251C1E4C6BCA001E83A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187D251A1E4C6BCA001E83A1 /* LaunchScreen.storyboard */; };
 		187D25271E4C6BCA001E83A1 /* SDSelectMorePersonViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D25261E4C6BCA001E83A1 /* SDSelectMorePersonViewTests.m */; };
 		187D25321E4C6BCA001E83A1 /* SDSelectMorePersonViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D25311E4C6BCA001E83A1 /* SDSelectMorePersonViewUITests.m */; };
+		187D25461E4C6D17001E83A1 /* SmallDuiGouTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D25411E4C6D17001E83A1 /* SmallDuiGouTableViewCell.m */; };
+		187D25471E4C6D17001E83A1 /* WorkingSelectPersonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D25431E4C6D17001E83A1 /* WorkingSelectPersonView.m */; };
+		187D25481E4C6D17001E83A1 /* WorkingSelectPersonTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D25451E4C6D17001E83A1 /* WorkingSelectPersonTableView.m */; };
+		187D254F1E4C6D8E001E83A1 /* bg_moreunfold.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D25491E4C6D8E001E83A1 /* bg_moreunfold.png */; };
+		187D25501E4C6D8E001E83A1 /* icon_check_box_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D254A1E4C6D8E001E83A1 /* icon_check_box_select.png */; };
+		187D25511E4C6D8E001E83A1 /* icon_check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D254B1E4C6D8E001E83A1 /* icon_check_box.png */; };
+		187D25521E4C6D8E001E83A1 /* img_addperson.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D254C1E4C6D8E001E83A1 /* img_addperson.png */; };
+		187D25531E4C6D8E001E83A1 /* mainColor.png in Resources */ = {isa = PBXBuildFile; fileRef = 187D254D1E4C6D8E001E83A1 /* mainColor.png */; };
+		187D25541E4C6D8E001E83A1 /* selectPersonData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187D254E1E4C6D8E001E83A1 /* selectPersonData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +60,19 @@
 		187D252D1E4C6BCA001E83A1 /* SDSelectMorePersonViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDSelectMorePersonViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		187D25311E4C6BCA001E83A1 /* SDSelectMorePersonViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDSelectMorePersonViewUITests.m; sourceTree = "<group>"; };
 		187D25331E4C6BCA001E83A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		187D25401E4C6D17001E83A1 /* SmallDuiGouTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallDuiGouTableViewCell.h; sourceTree = "<group>"; };
+		187D25411E4C6D17001E83A1 /* SmallDuiGouTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallDuiGouTableViewCell.m; sourceTree = "<group>"; };
+		187D25421E4C6D17001E83A1 /* WorkingSelectPersonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingSelectPersonView.h; sourceTree = "<group>"; };
+		187D25431E4C6D17001E83A1 /* WorkingSelectPersonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingSelectPersonView.m; sourceTree = "<group>"; };
+		187D25441E4C6D17001E83A1 /* WorkingSelectPersonTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingSelectPersonTableView.h; sourceTree = "<group>"; };
+		187D25451E4C6D17001E83A1 /* WorkingSelectPersonTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingSelectPersonTableView.m; sourceTree = "<group>"; };
+		187D25491E4C6D8E001E83A1 /* bg_moreunfold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_moreunfold.png; sourceTree = "<group>"; };
+		187D254A1E4C6D8E001E83A1 /* icon_check_box_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_check_box_select.png; sourceTree = "<group>"; };
+		187D254B1E4C6D8E001E83A1 /* icon_check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_check_box.png; sourceTree = "<group>"; };
+		187D254C1E4C6D8E001E83A1 /* img_addperson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_addperson.png; sourceTree = "<group>"; };
+		187D254D1E4C6D8E001E83A1 /* mainColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainColor.png; sourceTree = "<group>"; };
+		187D254E1E4C6D8E001E83A1 /* selectPersonData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = selectPersonData.plist; sourceTree = "<group>"; };
+		187D25551E4C6EDB001E83A1 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +123,7 @@
 		187D250B1E4C6BCA001E83A1 /* SDSelectMorePersonView */ = {
 			isa = PBXGroup;
 			children = (
+				187D253F1E4C6CBC001E83A1 /* sdSelectMorePerson */,
 				187D250F1E4C6BCA001E83A1 /* AppDelegate.h */,
 				187D25101E4C6BCA001E83A1 /* AppDelegate.m */,
 				187D25121E4C6BCA001E83A1 /* ViewController.h */,
@@ -138,6 +161,26 @@
 				187D25331E4C6BCA001E83A1 /* Info.plist */,
 			);
 			path = SDSelectMorePersonViewUITests;
+			sourceTree = "<group>";
+		};
+		187D253F1E4C6CBC001E83A1 /* sdSelectMorePerson */ = {
+			isa = PBXGroup;
+			children = (
+				187D25491E4C6D8E001E83A1 /* bg_moreunfold.png */,
+				187D254A1E4C6D8E001E83A1 /* icon_check_box_select.png */,
+				187D254B1E4C6D8E001E83A1 /* icon_check_box.png */,
+				187D254C1E4C6D8E001E83A1 /* img_addperson.png */,
+				187D254D1E4C6D8E001E83A1 /* mainColor.png */,
+				187D254E1E4C6D8E001E83A1 /* selectPersonData.plist */,
+				187D25401E4C6D17001E83A1 /* SmallDuiGouTableViewCell.h */,
+				187D25411E4C6D17001E83A1 /* SmallDuiGouTableViewCell.m */,
+				187D25421E4C6D17001E83A1 /* WorkingSelectPersonView.h */,
+				187D25431E4C6D17001E83A1 /* WorkingSelectPersonView.m */,
+				187D25441E4C6D17001E83A1 /* WorkingSelectPersonTableView.h */,
+				187D25451E4C6D17001E83A1 /* WorkingSelectPersonTableView.m */,
+				187D25551E4C6EDB001E83A1 /* Header.h */,
+			);
+			path = sdSelectMorePerson;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,8 +290,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				187D251C1E4C6BCA001E83A1 /* LaunchScreen.storyboard in Resources */,
+				187D25501E4C6D8E001E83A1 /* icon_check_box_select.png in Resources */,
+				187D25541E4C6D8E001E83A1 /* selectPersonData.plist in Resources */,
 				187D25191E4C6BCA001E83A1 /* Assets.xcassets in Resources */,
+				187D25511E4C6D8E001E83A1 /* icon_check_box.png in Resources */,
+				187D25531E4C6D8E001E83A1 /* mainColor.png in Resources */,
 				187D25171E4C6BCA001E83A1 /* Main.storyboard in Resources */,
+				187D25521E4C6D8E001E83A1 /* img_addperson.png in Resources */,
+				187D254F1E4C6D8E001E83A1 /* bg_moreunfold.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +322,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187D25481E4C6D17001E83A1 /* WorkingSelectPersonTableView.m in Sources */,
 				187D25141E4C6BCA001E83A1 /* ViewController.m in Sources */,
 				187D25111E4C6BCA001E83A1 /* AppDelegate.m in Sources */,
+				187D25471E4C6D17001E83A1 /* WorkingSelectPersonView.m in Sources */,
+				187D25461E4C6D17001E83A1 /* SmallDuiGouTableViewCell.m in Sources */,
 				187D250E1E4C6BCA001E83A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
